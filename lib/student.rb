@@ -61,6 +61,7 @@ class Student
       FROM students
       WHERE name = ?
     SQL
-    DB[:conn].execute(sql, name)
+    result = DB[:conn].execute(sql, name)[0]
+    Song.new(result[0], result[1], result[2])
   end
 end
